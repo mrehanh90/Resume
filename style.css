@@ -1,3 +1,6 @@
+/* ==========================================
+   CSS Reset & Variables
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +24,9 @@ body {
     padding: 40px 20px;
 }
 
+/* ==========================================
+   Header & Navigation
+   ========================================== */
 .social-links {
     text-align: right;
 }
@@ -87,6 +93,9 @@ body {
     margin-bottom: 20px;
 }
 
+/* ==========================================
+   Skills Section
+   ========================================== */
 .skills-container {
     margin-bottom: 20px;
     display: flex;
@@ -105,6 +114,9 @@ body {
     font-weight: 500;
 }
 
+/* ==========================================
+   Projects & Cards Section
+   ========================================== */
 .projects-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -162,6 +174,9 @@ body {
     border-radius: 4px;
 }
 
+/* ==========================================
+   Footer
+   ========================================== */
 footer {
     text-align: center;
     border-top: 1px solid var(--border-color);
@@ -170,7 +185,91 @@ footer {
     color: var(--text-secondary);
 }
 
-/* Print Friendly Layout */
+/* ==========================================
+   Welcome Screen & Bottom-Left to Top-Right Shooting Star Animation
+   ========================================== */
+#welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+    transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+}
+
+.welcome-content {
+    text-align: center;
+    z-index: 2;
+}
+
+.welcome-content h1 {
+    font-size: 26px;
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    animation: fadeInText 1.5s ease-in-out infinite alternate;
+}
+
+/* Shooting Star Trajectory Styling */
+.shooting-star {
+    position: absolute;
+    left: -150px;
+    bottom: -150px;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(45deg, rgba(56, 189, 248, 0), var(--accent-color));
+    border-radius: 50%;
+    filter: drop-shadow(0 0 8px var(--accent-color));
+    transform: rotate(45deg);
+    animation: shootDiagonal 1.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+/* Glowing head of the shooting star */
+.shooting-star::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 12px 3px var(--accent-color);
+}
+
+@keyframes shootDiagonal {
+    0% {
+        transform: translate(0, 0) rotate(45deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(115vw, -115vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* ==========================================
+   Print Friendly Layout
+   ========================================== */
 @media print {
     body {
         background: #ffffff;
@@ -190,26 +289,9 @@ footer {
     }
 }
 
-@media (max-width: 600px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .social-links {
-        text-align: left;
-        margin-left: 0;
-    }
-    .social-links a {
-        margin-left: 0;
-        margin-right: 15px;
-    }
-}
-
 /* ==========================================
-   Added Responsive Media Queries for Mobile & Tablet
+   Responsive Media Queries for Mobile & Tablet
    ========================================== */
-
-/* Tablets and Smaller Laptops (Max width: 768px) */
 @media (max-width: 768px) {
     body {
         padding: 20px 12px;
@@ -226,10 +308,13 @@ footer {
         align-items: flex-start;
         gap: 10px;
     }
+
+    .social-links {
+        text-align: left;
+    }
 }
 
-/* Mobile Phones (Max width: 600px) */
-@media (max-width: 600px) {
+@media (max-width: 375px) {
     .profile-info h1 {
         font-size: 22px;
     }

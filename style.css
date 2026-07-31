@@ -186,7 +186,7 @@ footer {
 }
 
 /* ==========================================
-   Welcome Screen & Bottom-Left to Top-Right Shooting Star Animation
+   Binary Matrix Welcome Screen Animation
    ========================================== */
 #welcome-overlay {
     position: fixed;
@@ -194,7 +194,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--bg-color);
+    background-color: #070b14;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -203,63 +203,75 @@ footer {
     transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
 }
 
+.matrix-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.matrix-drop {
+    position: absolute;
+    top: -100px;
+    color: var(--accent-color);
+    font-family: monospace;
+    font-size: 20px; /* Decreased size */
+    line-height: 0.85; /* Reduced gap between lines from upward to downward */
+    white-space: nowrap;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px);
+    }
+    100% {
+        transform: translateY(110vh);
+    }
+}
+
 .welcome-content {
     text-align: center;
     z-index: 2;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+}
+
+.terminal-box .prompt {
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 8px;
 }
 
 .welcome-content h1 {
-    font-size: 26px;
-    color: var(--text-primary);
+    font-family: monospace;
+    font-size: 22px;
+    color: var(--accent-color);
     font-weight: 600;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+.developer-tag {
+    font-size: 13px;
+    color: var(--text-secondary);
     letter-spacing: 0.05em;
-    animation: fadeInText 1.5s ease-in-out infinite alternate;
 }
 
-/* Shooting Star Trajectory Styling */
-.shooting-star {
-    position: absolute;
-    left: -150px;
-    bottom: -150px;
-    width: 120px;
-    height: 2px;
-    background: linear-gradient(45deg, rgba(56, 189, 248, 0), var(--accent-color));
-    border-radius: 50%;
-    filter: drop-shadow(0 0 8px var(--accent-color));
-    transform: rotate(45deg);
-    animation: shootDiagonal 1.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-}
-
-/* Glowing head of the shooting star */
-.shooting-star::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 6px;
-    height: 6px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    box-shadow: 0 0 12px 3px var(--accent-color);
-}
-
-@keyframes shootDiagonal {
-    0% {
-        transform: translate(0, 0) rotate(45deg);
-        opacity: 0;
-    }
-    20% {
-        opacity: 1;
-    }
-    100% {
-        transform: translate(115vw, -115vh) rotate(45deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fadeInText {
-    0% { opacity: 0.4; }
-    100% { opacity: 1; }
+.highlight-name {
+    color: var(--text-primary);
+    font-weight: 700;
 }
 
 .fade-out {
@@ -312,11 +324,6 @@ footer {
     .social-links {
         text-align: left;
     }
-    
-    /* Optimize shooting star speed on smaller screens */
-    .shooting-star {
-        animation-duration: 1.5s;
-    }
 }
 
 @media (max-width: 375px) {
@@ -339,5 +346,9 @@ footer {
     .skill-pill {
         font-size: 12px;
         padding: 5px 10px;
+    }
+    
+    .welcome-content h1 {
+        font-size: 16px;
     }
 }

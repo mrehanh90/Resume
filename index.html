@@ -7,11 +7,15 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <!-- Welcome Animation Overlay with Shooting Star -->
+        <!-- Binary Matrix Welcome Screen Overlay -->
         <div id="welcome-overlay">
-            <div class="shooting-star"></div>
+            <div class="matrix-bg" id="matrix-container"></div>
             <div class="welcome-content">
-                <h1>Welcome to Rehan's Resume</h1>
+                <div class="terminal-box">
+                    <span class="prompt">&gt; INITIALIZING_SYSTEM...</span>
+                    <h1 id="binary-title">01001101 01010011 01000011</h1>
+                    <p class="developer-tag">DEVELOPER: <span class="highlight-name">MUHAMMAD REHAN HUSSAIN</span></p>
+                </div>
             </div>
         </div>
 
@@ -132,13 +136,33 @@
             </footer>
         </div>
 
-        <!-- Welcome Animation Script -->
+        <!-- Binary Animation & Boot Script -->
         <script>
             window.addEventListener("load", function () {
+                // Generate matrix rain effect
+                const matrixContainer = document.getElementById("matrix-container");
+                const characters = "0101010101REHAN_CS_SQA_MYSQL_PYTHON";
+                
+                for (let i = 0; i < 35; i++) {
+                    const drop = document.createElement("div");
+                    drop.className = "matrix-drop";
+                    drop.style.left = `${Math.random() * 100}%`;
+                    drop.style.animationDuration = `${1 + Math.random() * 2}s`;
+                    drop.style.animationDelay = `${Math.random() * 1}s`;
+                    
+                    let text = "";
+                    for(let j = 0; j < 20; j++) {
+                        text += characters.charAt(Math.floor(Math.random() * characters.length)) + "<br>";
+                    }
+                    drop.innerHTML = text;
+                    matrixContainer.appendChild(drop);
+                }
+
+                // Fade out overlay after boot sequence
                 setTimeout(function () {
                     const overlay = document.getElementById("welcome-overlay");
                     overlay.classList.add("fade-out");
-                }, 2200);
+                }, 2800);
             });
         </script>
     </body>

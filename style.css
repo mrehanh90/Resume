@@ -312,6 +312,11 @@ footer {
     .social-links {
         text-align: left;
     }
+    
+    /* Optimize shooting star speed on smaller screens */
+    .shooting-star {
+        animation-duration: 1.5s;
+    }
 }
 
 @media (max-width: 375px) {

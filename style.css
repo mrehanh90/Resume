@@ -229,7 +229,7 @@ footer {
 }
 
 /* Mobile Phones (Max width: 600px) */
-@media (max-width: 1080px) {
+@media (max-width: 600px) {
     .profile-info h1 {
         font-size: 22px;
     }

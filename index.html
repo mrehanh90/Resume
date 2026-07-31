@@ -136,34 +136,7 @@
             </footer>
         </div>
 
-        <!-- Binary Animation & Boot Script -->
-        <script>
-            window.addEventListener("load", function () {
-                // Generate matrix rain effect
-                const matrixContainer = document.getElementById("matrix-container");
-                const characters = "0101010101REHAN_CS_SQA_MYSQL_PYTHON";
-                
-                for (let i = 0; i < 35; i++) {
-                    const drop = document.createElement("div");
-                    drop.className = "matrix-drop";
-                    drop.style.left = `${Math.random() * 100}%`;
-                    drop.style.animationDuration = `${1 + Math.random() * 2}s`;
-                    drop.style.animationDelay = `${Math.random() * 1}s`;
-                    
-                    let text = "";
-                    for(let j = 0; j < 20; j++) {
-                        text += characters.charAt(Math.floor(Math.random() * characters.length)) + "<br>";
-                    }
-                    drop.innerHTML = text;
-                    matrixContainer.appendChild(drop);
-                }
-
-                // Fade out overlay after boot sequence
-                setTimeout(function () {
-                    const overlay = document.getElementById("welcome-overlay");
-                    overlay.classList.add("fade-out");
-                }, 2800);
-            });
-        </script>
+        <!-- External Script File Link -->
+        <script src="script.js"></script>
     </body>
 </html>

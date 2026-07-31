@@ -25,7 +25,7 @@ window.addEventListener("load", function () {
     }, 2800);
 });
 // Disable Right-Click Context Menu
-document.addEventListener("contextmenu", function (e) {
+/* document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
 });
 
